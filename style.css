@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;       /* Clean and readable font */
+    margin: 0;
+    padding: 40px 0;                      /* Adds top spacing to center game */
+    background-color: #f4f4f4;            /* Light gray background */
+    display: flex;                        /* Centers the wrapper horizontally */
+    justify-content: center;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;              /* Stack elements vertically */
+    align-items: center;                 /* Center align everything inside */
+}
+
+
+/* Game Board Grid */
+#gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* 3 columns of 100px */
+    grid-template-rows: repeat(3, 100px);    /* 3 rows of 100px */
+    gap: 5px;                                /* Gap between cells */
+}
+
+/* Game Cells */
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;               /* White background */
+    border: 1px solid #ccc;              /* Light border */
+    display: flex;                        /* Center the X/O in the cell */
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;                      /* Size of X/O */
+    font-weight: bold;
+    cursor: pointer;                     /* Pointer on hover */
+    transition: background-color 0.3s;   /* Smooth hover effect */
+    position: relative;                 /* Needed for ghost icon positioning */
+    user-select: none;                  /* Prevents text selection */
+    -webkit-user-select: none;          /* Ensures compatibility with Safari */
+}
+
+/* Ghost Symbol on Hover (uses data-ghost attribute) */
+.cell.hover-x:hover::after,
+.cell.hover-o:hover::after {
+    content: attr(data-ghost);         /* Show X or O as ghost */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    opacity: 0.3;                      /* Faded/ghost look */
+    pointer-events: none;             /* Doesn't interfere with clicks */
+}
+
+/* Color for ghost X and O */
+.cell.hover-x:hover::after {
+    color: red;
+}
+.cell.hover-o:hover::after {
+    color: blue;
+}
+
+/* Background color when hovering */
+.cell:hover {
+    background-color: #e0e0e0;         /* Generic light gray on hover */
+}
+/* Specific hover colors for each player */
+.cell.hover-x:hover {
+    background-color: #ffe5e5;         /* Light red */
+}
+.cell.hover-o:hover {
+    background-color: #e5f0ff;         /* Light blue */
+}
+
+/* Final X and O cell colors */
+.cell.x {
+    color: red;
+}
+.cell.o {
+    color: blue;
+}
+
+/* Game Message Area */
+#status {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Reset Button Styling */
+#reset-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;         /* Bootstrap blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Reset Button Hover */
+#reset-button:hover {
+    background-color: #0056b3;         /* Darker blue on hover */
+}
